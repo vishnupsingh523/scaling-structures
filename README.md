@@ -11,6 +11,7 @@ Sorting:
     5. Insertion Sort Improved Version
     6. Merge-Sort
     7. Quick Sort
+    8. Sorting Using generic functions
     ...
 Tree:
     1. Tree-Implementation
