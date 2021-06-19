@@ -5,18 +5,22 @@ using namespace std;
 
 
 int main() {
-    int num;
-    cout<<"Number: ";
-    cin>>num;
-
-    cout<<"\nPrinting all the divisiors : \n";
+    int size;
+    unordered_map<int, int> ump;
     
-    int i=1;
-    for(;i*i<num;i++)
-    if(num%i==0)
-    cout<<" "<<i;
+    cout<<"Size: ";
+    cin>>size;
 
-    for(; i>=1;i--)
-    if(num%i==0)
-    cout<<" "<<(num/i);
+    int value =0;
+    for(int i=0;i<size;i++)
+    {
+        cin>>value;
+        ump[value]++;
+    }
+
+    cout<<"\nNumber : Frequency\n";
+    for(auto itr = ump.begin();itr!= ump.end();itr++)
+    cout<<itr->first<<" "<<itr->second<<"\n";
+
+
 }
