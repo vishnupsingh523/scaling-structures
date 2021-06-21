@@ -3,24 +3,24 @@
 
 using namespace std;
 
-bool sumIsPresent(int arr[], int size, int sum){
+int longestLength(int arr[], int size, int sum){
     unordered_map<int, int> ump;
 
+    int m =0;
     int val = 0;
-    ump.insert(make_pair(val, 1));
+    ump.insert(make_pair(val, -1));
 
     for(int i=0;i<size;i++)
     {
         val += arr[i];
-        if(ump.find(val-sum) != ump.end())
+        if(ump.find(val-sum)!=ump.end())
+            m++;
+        else if(ump.find(val) == ump.end())
         {
-            cout<<" "<<val;
-            return true;
+            ump.insert(make_pair(val,i));
         }
-        
-        ump.insert(make_pair(val,1));
     }
-    return false;
+    return (m*(m+1))/2;
 }
 
 int main() {
@@ -37,8 +37,5 @@ int main() {
     for(int i=0;i<size;i++)
     cin>>arr[i];
 
-    if(sumIsPresent(arr, size, sum))
-    cout<<"YES";
-    else
-    cout<<"NO";
+    cout<<"Number of Subarrays: "<<longestLength(arr, size, sum);
 }

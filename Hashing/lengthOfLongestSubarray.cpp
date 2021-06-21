@@ -3,24 +3,24 @@
 
 using namespace std;
 
-bool sumIsPresent(int arr[], int size, int sum){
+    int longestLength(int arr[], int size){
     unordered_map<int, int> ump;
 
+    int m =0;
     int val = 0;
-    ump.insert(make_pair(val, 1));
+    ump.insert(make_pair(val, -1));
 
     for(int i=0;i<size;i++)
     {
         val += arr[i];
-        if(ump.find(val-sum) != ump.end())
+        if(ump.find(val) == ump.end())
         {
-            cout<<" "<<val;
-            return true;
+            ump.insert(make_pair(val,i));
         }
-        
-        ump.insert(make_pair(val,1));
+        else
+        m = max(m, i- ump[val]);
     }
-    return false;
+    return m;
 }
 
 int main() {
@@ -29,16 +29,13 @@ int main() {
 
     cout<<"Size: ";
     cin>>size;
-    cout<<"\nSum: ";
-    cin>>sum;
+    // cout<<"\nSum: ";
+    // cin>>sum;
 
     cout<<"\nValues: ";
     int arr[size];
     for(int i=0;i<size;i++)
     cin>>arr[i];
 
-    if(sumIsPresent(arr, size, sum))
-    cout<<"YES";
-    else
-    cout<<"NO";
+    cout<<"Largest length: "<<longestLength(arr, size);
 }
